@@ -1,0 +1,134 @@
+<div class="main-content">
+  <div class="container">
+		<div class="module module-dashboard">
+			<div class="module-content">
+				<div class="box box-widget widget-user">
+					<div class="widget-user-header">
+						<div class="widget-user-image"
+							style="background-image:url('https://id.ohi.vn/frontend/images/default-avatar.png');">
+
+						</div>
+						<div class="widget-user-header-wrap">
+							<h3 class="widget-user-username">0966496360</h3>
+							<h4 class="widget-user-desc">Tài khoản : 0966496360</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <div class="container">
+    <div class="module module-hostel">
+      <div class="module-header">
+        Danh sách Tin
+        <p class="description">Quản lý tin của bạn tại hệ thống Trọ Tốt</p>
+      </div>
+      <div class="module-content">
+
+        <form action="" id="appForm" name="appForm" enctype="multipart/form-data" method="post">
+          <table cellspacing="0" cellpadding="0" class="manager">
+            <tbody>
+              <tr *ngFor="let item of news_list">
+                <td>
+                   <a class="title" href="/detail-news/{{ item?.id }}" target="_blank">{{ item.name }}
+                  </a><br>
+                  <p class="block_action">
+                    <!-- <a href="http://localhost:4200/home/new/new-upgrade" class="action nangcaptin vip"><i
+                        class="fa fa-star" aria-hidden="true"></i> Nâng cấp tin</a> -->
+                    <a  href="/new/new-edit/{{ item?.id }}" class="action edit"><i
+                        class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa tin</a>
+                    <!-- <a href="#" class="action disabled"><i class="fa fa-ban" aria-hidden="true"></i>
+                      Hết phòng</a> -->
+                    <a  (click)="onDelete(item?.id)" class="action trash"><i
+                        class="fa fa-trash-o" aria-hidden="true"></i> Xóa tin</a>
+                  </p>
+                  <p class="detail">Mã tin: <span>{{ item.id }}</span></p>
+                  <!-- <p class="detail block_type">Trạng thái: <span class="type">Tin thường</span>, <span
+                      class="status">đang hiển thị</span></p>
+                  <p class="detail block_position">Thứ tự hiển thị tin: <strong>1</strong></p>
+                  <p class="detail block_hits">Lượt xem tin: <span>1</span></p> -->
+                  <p class="detail block_time">
+                  </p>
+                  <p class="detail published">Thời gian đăng: <span>{{ item.created_at|date:'dd/MM/yyyy'  }}</span></p>
+                  <!-- <p class="detail created">Thời gian tạo: <span>{{ item.created_at|date:'dd/MM/yyyy'  }}</span></p> -->
+                </td>
+              </tr>
+              <!-- <tr>
+                <td>
+                  02. <a class="title" href="http://localhost:4200/home/detail" target="_blank">Trọ khép kín
+                  </a><br>
+
+                  <p class="block_action">
+                    <a href="http://localhost:4200/home/new/new-upgrade" class="action nangcaptin vip"><i
+                        class="fa fa-star" aria-hidden="true"></i> Nâng cấp tin</a>
+                    <a href="http://localhost:4200/home/new/new-edit" class="action edit"><i
+                        class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa tin</a>
+
+
+
+                    <a href="#" class="action disabled"><i class="fa fa-ban" aria-hidden="true"></i>
+                      Hết phòng</a>
+
+                    <a href="#" onclick="OnSubmitForm('https://tromoi.com/user/xoa-tin/20495')" class="action trash"><i
+                        class="fa fa-trash-o" aria-hidden="true"></i> Xoá tin</a>
+                  </p>
+
+
+                  <p class="detail">Mã tin: <span>1</span></p>
+                  <p class="detail block_type">Trạng thái: <span class="type">Tin thường</span>, <span
+                      class="status">đang hiển thị</span></p>
+                  <p class="detail block_position">Thứ tự hiển thị tin: <strong>2</strong></p>
+                  <p class="detail block_hits">Lượt xem tin: <span>1</span></p>
+                  <p class="detail block_time">
+                  </p>
+                  <p class="detail published">Thời gian đăng: <span>Hôm nay</span></p>
+                  <p class="detail created">Thời gian tạo: <span>Hôm nay</span></p>
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+
+
+                  03. <a class="title" href="http://localhost:4200/home/detail" target="_blank">Trọ khép kín
+                  </a><br>
+
+                  <p class="block_action">
+                    <a href="http://localhost:4200/home/new/new-upgrade" class="action nangcaptin vip"><i
+                        class="fa fa-star" aria-hidden="true"></i> Nâng cấp tin</a>
+                    <a href="http://localhost:4200/home/new/new-edit" class="action edit"><i
+                        class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa tin</a>
+
+
+
+                    <a href="#" class="action disabled"><i class="fa fa-ban" aria-hidden="true"></i>
+                      Hết phòng</a>
+
+                    <a href="#" onclick="OnSubmitForm('https://tromoi.com/user/xoa-tin/20495')" class="action trash"><i
+                        class="fa fa-trash-o" aria-hidden="true"></i> Xoá tin</a>
+                  </p>
+
+
+                  <p class="detail">Mã tin: <span>1</span></p>
+                  <p class="detail block_type">Trạng thái: <span class="type">Tin thường</span>, <span
+                      class="status">đang hiển thị</span></p>
+                  <p class="detail block_position">Thứ tự hiển thị tin: <strong>3</strong></p>
+                  <p class="detail block_hits">Lượt xem tin: <span>1</span></p>
+                  <p class="detail block_time">
+                  </p>
+                  <p class="detail published">Thời gian đăng: <span>Hôm nay</span></p>
+                  <p class="detail created">Thời gian tạo: <span>Hôm nay</span></p>
+                </td>
+
+              </tr> -->
+
+            </tbody>
+          </table>
+
+        </form>
+        <!-- <script
+          type="text/javascript">function OnSubmitForm(url) { var flag = confirm('Bạn có đồng ý xóa tin này không?'); if (flag == true) { document.appForm.action = url; document.appForm.submit(); return true; } } Guest.OptionTin();</script> -->
+      </div>
+    </div>
+  </div>
+</div>

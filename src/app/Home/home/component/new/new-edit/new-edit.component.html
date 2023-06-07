@@ -1,0 +1,187 @@
+<div class="main-content">
+	<div class="container">
+		<div class="module module-hostel add">
+			<div class="module-header">
+				Sửa Tin
+				<!-- <p class="description">Đăng tin của bạn vào hệ thống tìm kiếm Trọ</p> -->
+			</div>
+			<div class="module-content">
+        <form [formGroup]="newsForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" method="post"
+        novalidate="novalidate">
+        <div class="step _1">
+          <div class="row">
+            <label>Tiêu đề tin <i>*</i></label>
+            <div class="item long">
+              <input type="text" id="name" formControlName="name" class="" placeholder="Tiêu đề đăng tin">
+            </div>
+          </div>
+          <div class="group-row">
+            <div class="row col-3">
+              <label>Loại hình</label>
+              <div class="item long">
+                <select id="type" formControlName="category_id">
+                  <option value=""disabled>-- Chọn loại hình trọ--</option>
+                  <option *ngFor="let item of category_product" value="{{ item.id }}">{{ item.name_cate }}</option>
+                </select>
+              </div>
+            </div>
+            <!-- <div class="row col-3">
+              <label>Hình thức trọ</label>
+              <div class="item long">
+                <select id="form_type" name="form_type">
+                  <option value="phong-tro">Phòng trọ</option>
+                  <option value="ky-tuc-xa">Ký túc xá (dorm)</option>
+                  <option value="chung-cu-mini">Chung cư mini</option>
+                  <option value="cu-xa">Cư xá</option>
+                  <option value="homestay">Homestay</option>
+                  <option value="tro-nha-nguyen-can">Trọ nhà nguyên căn</option>
+                  <option value="tro-trong-nha-chung-chu">Trọ trong nhà chung chủ</option>
+                </select>
+              </div>
+            </div> -->
+            <div class="row col-3">
+              <label>Trọ tự quản</label>
+              <div class="item long">
+                <select id="managing" formControlName="self_governance">
+                  <option value="0">--- Chọn hình thức ---</option>
+                  <option value="1">Không</option>
+                  <option value="2">Có</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="group-row">
+            <!-- <div class="row col-3">
+              <label>Phòng trống</label>
+              <div class="item long">
+                <input type="number" id="empty_room" name="empty_room" value="1"
+                  placeholder="Phòng còn trống cho thuê" min="0">
+              </div>
+            </div> -->
+            <div class="row col-3">
+              <label>Tổng phòng</label>
+              <div class="item long">
+                <input type="number" id="room" formControlName="total_room" placeholder="Tổng số phòng" min="1">
+              </div>
+            </div>
+            <div class="row col-3">
+              <label>Ở tối đa (người/phòng)</label>
+              <div class="item long">
+                <input type="number" id="quantity" formControlName="at_maximum" placeholder="Tối đa số người ở 1 phòng" min="1">
+              </div>
+            </div>
+          </div>
+          <div class="group-row">
+            <div class="row col-3">
+              <label>Giá phòng</label>
+              <div class="item long form-group input-group">
+                <input type="number" id="price_min" formControlName="default_price" class="txt_short " min="0"
+                  placeholder="Nhập đúng giá trị tiền" title="Giá mỗi tháng"> <span
+                  class="input-group-addon">VNĐ</span>
+              </div>
+              <label class="accounting" id="lbl_price_min"></label>
+            </div>
+            <div class="row col-3">
+              <label>Diện tích phòng</label>
+              <div class="item long form-group input-group">
+                <input type="number" id="area_min"  formControlName="room_area"  placeholder="Diện tích của phòng" step="1" min="0">
+                <span class="input-group-addon">m²</span>
+              </div>
+            </div>
+            <div class="row col-3">
+              <label>Giới tính ưu tiên</label>
+              <div class="item long">
+                <select id="sex" formControlName="preferred_gender">
+                  <option value="">--- Tất cả ---</option>
+                  <option value="1">Nam</option>
+                  <option value="2">Nữ</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <p>&nbsp;</p>
+          <div class="row col-49 left">
+
+
+            <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+              <label for="district_id">Quận/Huyện:</label>
+              <select id="district_id" name="district_id" formControlName="district_id" [(ngModel)]="selectedDistrict" (change)="loadWards(selectedDistrict)">
+                <option value="" disabled>Chọn quận/huyện</option>
+                <option *ngFor="let district of districts" [value]="district.code">{{ district.name }}</option>
+              </select>
+            </div>
+            <!-- <div class="dropDownSelect2"></div> -->
+
+            <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
+              <label for="wards_id">Phường/Xã:</label>
+              <select id="wards_id" name="wards_id" formControlName="wards_id" [(ngModel)]="selectedWard">
+                <option value="">Chọn phường/xã</option>
+                <option *ngFor="let ward of wards" [value]="ward.code">{{ ward.name }}</option>
+              </select>
+              <!-- <div class="dropDownSelect2"></div> -->
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+              <label>Địa chỉ <i>*</i></label>
+              <div class="item address">
+                <input type="text" id="address" formControlName="address" class="address " placeholder="Địa chỉ..."
+                  title="Địa chỉ">
+              </div>
+            </div>
+            <!-- <div class="notice warning">Nhập vào địa chỉ chính xác hoặc hoặc sửa vị trí trên bản đồ bằng cách kéo biểu
+              tượng <img src="https://tromoi.com/frontend/home/images/google-map-pointer.png"> tới đúng vị trí bạn cần
+              để có vị trí google như mong muốn.</div> -->
+            <div class="clear"></div>
+          </div>
+
+          <div class="clear"></div>
+          <div class="line"></div>
+          <h2>Mô tả chi tiết</h2>
+          <div class="row content">
+            <div class="item content">
+              <textarea id="content"  formControlName="description" class=""
+                placeholder="Nội dung tin ít nhất 10 ký tự. Bạn nên có đủ các thông tin của tin đăng: nhà vệ sinh trong hay ngoài, giá điện, nước, trọ gần khu vực nào và các thông tin thêm của trọ."
+                rows="10"></textarea>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <p>&nbsp;</p>
+          <h2>Thông tin liên hệ</h2>
+          <div class="row col-49 left">
+            <label>Họ tên</label>
+            <div class="item long">
+              <input type="text" id="master_name" formControlName="host"  class="">
+            </div>
+          </div>
+          <div class="row col-49 right">
+            <label>Điện thoại</label>
+            <div class="item long">
+              <input type="text" id="phone" formControlName="phone" class=""
+                placeholder="Nhập nhiều số điện thoại cách nhau bằng dấu chấm phẩy">
+            </div>
+          </div>
+          <div class="clear"></div>
+          <div class="line"></div>
+          <h2>Hình ảnh</h2>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" multiple>
+          <!-- <div class="mt-2" id="preview"></div> -->
+          <div class="row">
+            <!-- <div class="col"> -->
+              <div class="col-2 mt-2" *ngFor="let image of news?.images">
+                <img src="http://127.0.0.1:8000/storage/image/product/{{ image.image}}" style="width: 150px;" alt="" >
+                <button (click)="deleteImage(image.id)">X</button>
+              </div>
+              <div class=" mt-2"> <span id="preview"></span></div>
+            <!-- </div> -->
+          </div>
+          <div class="row submit">
+            <button class="save" >Lưu tin</button>
+            <!-- <a  id="button" class="save"></a> -->
+          </div>
+        </div>
+      </form>
+      </div>
+		</div>
+	</div>
+</div>

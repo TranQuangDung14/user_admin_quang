@@ -1,0 +1,187 @@
+
+					<div class="container-inner">
+						<div class="wrapper">
+							<div class="block-outer">
+								<div class="block-inner">
+									<div class="box-search-balloon">
+										<div class="box-search stick main">
+											<form id="top-search" name="top-search" method="get"
+												action="https://tromoi.com/tim-kiem">
+												<label class="opt search-form_label">
+													<input type="text" id="keyword" name="keyword"
+														class="keyword search-form_input" placeholder="Tìm kiếm nhanh"
+														autocomplete="off" /> <input type="submit" id="submit" value=""
+														class="button search-form_submit" />
+												</label>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+<div class="container">
+  <div id="main-content" class="main search">
+    <div id="sidebar" class="sidebar">
+      <div class="sidebar__inner">
+        <ul class="main">
+          <li>
+            <div class="dropdown">
+              <div class="heading-filter opt_location">Địa điểm, vị trí</div>
+              <div class="dropdown-content">
+
+                <label for="">chọn huyện</label>
+                <select id="district_id" name="district_id" [(ngModel)]="selectedDistrict"
+                  (change)="loadWards(selectedDistrict)">
+                  <option value="" selected> Tất cả</option>
+                  <option *ngFor="let district of districts" [value]="district.code">{{ district.name }}</option>
+                </select>
+
+                <!-- Ward select box -->
+                <label for="">chọn xã</label>
+                <select id="wards_id" name="wards_id" [(ngModel)]="selectedWard" (change)="selectWard(selectedWard)">
+                  <option value="">Tất cả</option>
+                  <option *ngFor="let ward of wards" [value]="ward.code">{{ ward.name }}</option>
+                </select>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown">
+              <div class="heading-filter opt_price">Tìm kiếm hình thức</div>
+              <div class="dropdown-content">
+                <div class="drop_body">
+                  <span class="dropdown-header">Hình thức</span>
+                  <select [(ngModel)]="category_id" (change)="filterByCategory(category_id)">
+                    <option value="" selected>Tất cả</option>
+                    <option *ngFor="let item of category" [value]="item.id">{{ item.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </li>
+          <li>
+
+
+            <div class="dropdown">
+              <div class="heading-filter opt_price">Tìm kiếm theo giá </div>
+              <div class="dropdown-content">
+                <div class="drop_body">
+                  <span class="radio" *ngFor="let option of [0,1,2,3,4,5,6,7,8]; let i = index">
+                    <input type="radio" [id]="'opt_price-' + i" name="opt_price" class="radio-btn"
+                      [(ngModel)]="opt_price" [value]="option" (change)="updatePriceRange(option)">
+                    <label [for]="'opt_price-' + i" class="label">{{ getPriceRangeLabel(i) }}</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li>
+            <!-- <div class="dropdown">
+              <div class="heading-filter opt_more">Các tiêu chí khác </div>
+              <div class="dropdown-content full">
+                <select name="opt_area" id="opt_area" class="opt-area" [(ngModel)]="opt_area"
+                  (change)="updateAreaRange(opt_area)">
+                  <option value="0" selected="">Diện tích ...</option>
+                  <option value="1">Dưới 20 m2</option>
+                  <option value="2">20 - 30 m2</option>
+                  <option value="3">30 - 50 m2</option>
+                  <option value="4">50 - 60 m2</option>
+                  <option value="5">60 - 70 m2</option>
+                  <option value="6">70 - 80 m2</option>
+                  <option value="7">80 - 100 m2</option>
+                  <option value="8">Trên 100 m2</option>
+                </select>
+
+              </div>
+            </div> -->
+            <div class="dropdown">
+              <div class="heading-filter opt_area">Tìm kiếm theo diện tích</div>
+              <div class="dropdown-content">
+                <div class="drop_body">
+                  <span class="radio" *ngFor="let option of areaOptions; let i = index">
+                    <input type="radio" [id]="'opt_area-' + i" name="opt_area" class="radio-btn" [(ngModel)]="opt_area"
+                      [value]="option.value" (change)="updateAreaRange(option.value)">
+                    <label [for]="'opt_area-' + i" class="label">{{ option.label }}</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </li>
+          <!-- <li>
+            <div class="action">
+              <button class="dropbtn btn-apply">TÌM KIẾM</button>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <div id="center" class="right">
+      <div class="filter-show">Hiển thị bộ lọc tìm kiếm</div>
+      <div class="hostel hostel-list main-list">
+        <div class="module">
+          <div class="modulecontent">
+
+
+            <!-- <div class="result-sort">
+              <h2 class="result">Kết quả: <strong>Hơn 2000</strong> tin bài</h2>
+              <div class="filter">
+                <span>Hiển thị: </span>
+                <select>
+                  <option value="default" selected="">Mặc định</option>
+                  <option value="price-up">Giá tăng dần</option>
+                  <option value="price-down">Giá giảm dần</option>
+                </select>
+              </div>
+            </div> -->
+            <div class="line"></div>
+
+            <div class="item column" title="Cho thuê trọ khép kín"
+              *ngFor="let item of news| paginate:{ itemsPerPage : tableSize, currentPage: page, totalItems: count};">
+              <div class="border">
+                <div class="image">
+                  <div class="heart" onclick="saveHostel(20640,23152)">
+                  </div>
+                  <a href="/detail-news/{{ item?.id }}"
+                    [style.background-image]="'url(http://127.0.0.1:8000/storage/image/product/' + item.images?.[0]?.image +')'"></a>
+                </div>
+                <div class="info col">
+                  <!-- <div class="star">
+                    <span class="local">
+                      <a >Hưng Yên</a> </span>
+
+                  </div> -->
+                  <h4 class="title ">
+                    <a href="/detail-news/{{ item?.id }}">
+                      {{ item.name }} </a>
+                  </h4>
+                  <div class="location-area ">
+                    <dl class="address">
+                      <dt> {{ item.address }}, {{ item.ward?.name }},{{ item.district?.name }}</dt>
+                    </dl>
+                  </div>
+                  <dl class="contact">
+                    <div class="price">
+                      {{ item.default_price }} VNĐ
+                    </div>
+                    <span class="published">{{ item.created_at|date:'dd/MM/yyyy' }}</span>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
+            <div class="paginator">
+              <pagination-controls previousLabel="" nextLabel="" (pageChange)="ontableDataChange($event)">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

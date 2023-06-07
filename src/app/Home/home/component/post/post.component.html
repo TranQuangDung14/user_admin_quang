@@ -1,0 +1,39 @@
+<div class="section box box-news">
+  <div class="container">
+    <div class="box-block-news">
+      <div class="box box-news news news-list latest main">
+        <div class="box-header">
+          <h2 class="box-title text-left text-upper">Bài viết</h2>
+        </div>
+        <div class="box-body">
+          <div class="modulecontent">
+
+            <div class="item" *ngFor="let item of posts |paginate:{ itemsPerPage : tableSize, currentPage: page, totalItems: count};">
+
+              <div class="border">
+                <div class="image"
+                  style="background-image:url('https://tromoi.com/uploads/members/ai.tran/blog/TM_23-3-01.png')">
+                  <a
+                    href="post"></a>
+                </div>
+                <div class="content">
+                  <h4 class="title"><a
+                      href="post">	{{ item.name }}</a></h4>
+                  <div class="description">{{ item.description }}
+                  </div>
+                  <span class="published">Hôm nay</span>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="paginator">
+            <pagination-controls previousLabel="" nextLabel="" (pageChange)="ontableDataChange($event)">
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

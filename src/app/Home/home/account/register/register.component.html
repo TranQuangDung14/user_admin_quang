@@ -1,0 +1,55 @@
+<div class="container position-sticky z-index-sticky top-0">
+  <div class="row">
+    <div class="col-12">
+    </div>
+  </div>
+</div>
+<main class="main-content  mt-0">
+  <div class="page-header align-items-start min-vh-100" style="background-image: url('https://tromoi.com/frontend/home/images/bg_head.jpg');">
+    <span class="mask bg-gradient-dark opacity-6"></span>
+    <div class="container my-auto">
+      <div class="row">
+        <div class="col-lg-4 col-md-8 col-12 mx-auto">
+          <div class="card z-index-0 fadeIn3 fadeInBottom">
+            <div class="card-header">
+              <h4 class="font-weight-bolder">Đăng ký</h4>
+              <p class="mb-0">Nhập email và mật khẩu của bạn để đăng ký</p>
+            </div>
+            <div class="card-body">
+              <!-- <form role="form"> -->
+                <form  method="POST"  [formGroup]="form"  (ngSubmit)="register()" autocomplete="on"  name="registerForm" id="form-1">
+                <div class="input-group input-group-outline mb-3">
+                  <!-- <label class="form-label">Tên người dùng</label> -->
+                  <input type="name" formControlName="name" placeholder="Tên người dùng" class="form-control">
+                </div>
+                <div class="input-group input-group-outline mb-3">
+                  <!-- <label class="">Email</label> -->
+                  <!-- <br> -->
+                  <input type="email" formControlName="email" placeholder="VD: email@gmail.com" class="form-control">
+                </div>
+                <div class="input-group input-group-outline mb-3">
+                  <!-- <label class="form-label">Mật khẩu</label> -->
+                  <input type="password" formControlName="password" placeholder="Nhập mật khẩu" class="form-control">
+                </div>
+                <div class="form-check form-check-info text-start ps-0">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                  <label class="form-check-label" for="flexCheckDefault">
+                    tôi đồng ý <a href="javascript:;" class="text-dark font-weight-bolder">các điều khoản và điều kiện</a>
+                  </label>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Đăng ký</button>
+                </div>
+                <p class="mt-4 text-sm text-center">
+                  Bạn đã có tài khoản?
+                  <a [routerLink]="['/login']" class="text-primary text-gradient font-weight-bold">Đăng nhập</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

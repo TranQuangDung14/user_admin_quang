@@ -1,0 +1,33 @@
+.main-image {
+  width: 100%; /* Adjust this value according to your needs */
+  height: 500px; /* Adjust this value according to your needs */
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.main-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.thumbnails {
+  display: flex;
+  overflow-x: auto;
+  margin: 30px;
+}
+
+.thumbnail {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.thumbnail img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
