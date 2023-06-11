@@ -72,23 +72,19 @@
 								<!-- <div class="tag vip">VIP</div> -->
 							</div>
 							<div class="info col">
-								<div class="star">
-									<span class="local">
-										<a href="#">Hưng Yên</a> </span>
-
-								</div>
+								
 								<h4 class="title vip">
 									<a href="/detail-news/{{ item?.id }}">
 										{{ item.name }} </a>
 								</h4>
 								<div class="location-area ">
 									<dl class="address">
-										<dt> Ba Đông, Phan Sào Nam, Phù Cừ</dt>
+										<dt>  {{ item.address }}, {{ item.ward?.name }}, {{ item.district?.name }}</dt>
 									</dl>
 								</div>
 								<dl class="contact">
-									<div class="price">
-										{{ item.default_price }}  VNĐ
+									<div class="price" style="color: red;">
+										{{ item.default_price |currency:'VND'}} 
 									</div>
 									<span class="published">{{ item.created_at|date:'dd/MM/yyyy'  }}</span>
 								</dl>
@@ -123,55 +119,42 @@
 						<div class="main">
 							<div class="modulecontent">
 
-								<div class="item column"
-									 *ngFor="let item of news_all_2">
-									<div class="border">
-										<div class="image">
-											<!-- <div class="heart" onclick="saveHostel(20565,)">
-												<a href="javascript:;" class="tag save heart-20565"
-													hostel-id="heart-20565"><svg viewBox="0 0 32 32"
-														xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-														role="presentation" focusable="false"
-														style="display: block; height: 24px; width: 24px;  stroke-width: 2; overflow: visible;">
-														<path
-															d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-														</path>
-													</svg></a>
-											</div> -->
-											<a  href="/detail-news/{{ item?.id }}"
-                      [style.background-image]="'url(http://127.0.0.1:8000/storage/image/product/' + item.images?.[0]?.image +')'" ></a>
-											<!-- <div class="tag hot">HOT</div> -->
-										</div>
-										<div class="info col">
-											<div class="star">
-												<span class="local">
-													<a >Hưng Yên</a> </span>
-
+									<div class="item column"
+										*ngFor="let item of news_all_2| paginate:{ itemsPerPage : tableSize2, currentPage: page2, totalItems: count2};">
+										<div class="border">
+											<div class="image">
+												
+												<a  href="/detail-news/{{ item?.id }}"
+												[style.background-image]="'url(http://127.0.0.1:8000/storage/image/product/' + item.images?.[0]?.image +')'" ></a>
+												
 											</div>
-											<h4 class="title hot">
-												<a href="/detail-news/{{ item?.id }}">
-													{{ item.name }} </a>
-											</h4>
-											<div class="location-area ">
-												<dl class="address">
-													<dt> Ba Đông, Phan Sào Nam, Phù Cừ</dt>
+											<div class="info col">
+												
+												<h4 class="title hot">
+													<a href="/detail-news/{{ item?.id }}">
+														{{ item.name }} </a>
+												</h4>
+												<div class="location-area ">
+													<dl class="address">
+														<dt> {{ item.address }}, {{ item.ward?.name }}, {{ item.district?.name }}</dt>
+													</dl>
+												</div>
+												<dl class="contact">
+													<div class="price" style="color: red;">
+														{{ item.default_price |currency:'VND'}}  VNĐ
+													</div>
+													<span class="published">{{ item.created_at|date:'dd/MM/yyyy'  }}</span>
 												</dl>
 											</div>
-											<dl class="contact">
-												<div class="price">
-                          {{ item.default_price }}  VNĐ
-												</div>
-												<span class="published">{{ item.created_at|date:'dd/MM/yyyy'  }}</span>
-											</dl>
 										</div>
 									</div>
-								</div>
 
 
 							</div>
-							<div class="action center">
-								<a href="https://tromoi.com/danh-sach?kind=hot" class="btn-global light">XEM THÊM</a>
-							</div>
+							<div class="paginator">
+								<pagination-controls previousLabel="" nextLabel="" (pageChange)="ontableDataChange2($event)">
+								</pagination-controls>
+							  </div>
 						</div>
 					</div>
 				</div>
@@ -184,32 +167,44 @@
 							<div class="sidebar-header">
 								<h2 class="sidebar-title">Danh sách Trọ tốt</h2>
 							</div>
-							<div class="item column" *ngFor="let item of news_all_1">
+							<!-- <div class="item column" *ngFor="let item of news_all_1| paginate:{ itemsPerPage : tableSize3, currentPage: page3, totalItems: count3};">
 								<div class="border">
 									<div class="info col">
-										<div class="star">
-											<span class="local">
-												<a href="#">Hưng Yên</a>
-											</span>
-										</div>
+										
 										<h4 class="title">
 											<a href="/detail-news/{{ item?.id }}">
 											{{ item.name }} </a>
 										</h4>
-										<div class="location-area">
-											<dl class="address">
-												<dt> Kỳ Đồng, Quận 3, Quận 3</dt>
-											</dl>
-										</div>
+										
 										<dl class="contact">
-											<div class="price">
-												{{ item.default_price }} VNĐ
+											<div class="price" style="color: red;">
+												{{ item.default_price |currency:'VND'}} VNĐ
 											</div>
 											<span class="published">{{ item.created_at|date:'dd/MM/yyyy'  }}</span>
 										</dl>
 									</div>
 								</div>
-							</div>
+							</div> -->
+							<!-- <div class="paginator">
+								<pagination-controls previousLabel="" nextLabel="" (pageChange)="ontableDataChange3($event)">
+								</pagination-controls>
+							  </div> -->
+							<div class="scrollable-list" style=" height: 61em; overflow-y: scroll">
+								<div class="item column" *ngFor="let item of news_all_1">
+								  <div class="border">
+									<div class="info col">
+									  <h4 class="title">
+										<a href="/detail-news/{{ item?.id }}">{{ item.name }}</a>
+									  </h4>
+									  <dl class="contact">
+										<div class="price" style="color: red;">{{ item.default_price | currency:'VND'}} VNĐ</div>
+										<span class="published">{{ item.created_at | date:'dd/MM/yyyy' }}</span>
+									  </dl>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							
 						</div>
 					</div>
 				</div>

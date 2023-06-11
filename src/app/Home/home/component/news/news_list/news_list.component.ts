@@ -24,6 +24,7 @@ export class News_listComponent implements OnInit {
   selectedWard: any;
   opt_price: number;
   selectedCategory: any;
+  searchText:any;
   constructor(
     private admin: ApiService,
     private toastr: ToastrService,
@@ -58,17 +59,17 @@ export class News_listComponent implements OnInit {
   // POSTS: any;
   page: number = 1;
   count: number = 0;
-  tableSize: number = 5;
+  tableSize: number = 6;
   tableSizes: any = [5, 10, 15, 20];
   //phân trang
   ontableDataChange(event: any) {
     this.page = event;
-    // this.get_all_voucher();
+    
   }
   ontableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    // this.get_all_voucher();
+    
   }
   category:any;
   get_all_index_news() {

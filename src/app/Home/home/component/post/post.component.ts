@@ -41,12 +41,12 @@ export class PostComponent implements OnInit {
   //phân trang
   ontableDataChange(event: any) {
     this.page = event;
-    // this.get_all_voucher();
+    
   }
   ontableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    // this.get_all_voucher();
+    
   }
 
 }

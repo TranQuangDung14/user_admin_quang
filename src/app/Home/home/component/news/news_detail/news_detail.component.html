@@ -36,12 +36,11 @@
                   </div>
                 </div>
                 <div class="blog-title">
-                  <h3> Cho thuê trọ khép kín 2222</h3>
+                  <h3> {{news_detail?.name}}</h3>
                 </div>
                 <div class="social-date">
 
-                  <!-- <div class="tag vip"> Tin VIP</div> -->
-                  <!-- <div class="tag sticked">Xác thực</div> -->
+              
                   <a href="javascript:void(0);" onclick="saveHostel(20642,23152)" class="tag saved heart-20642">Lưu
                     tin</a>
 
@@ -56,19 +55,14 @@
                     </dl>
                     <dl>
                       <dt>Giá:</dt>
-                      <dd>
+                      <dd style="color: red;">
 
-                       {{ news_detail?.default_price }} đồng/tháng
+                       {{ news_detail?.default_price|currency:'VND' }} /tháng
                       </dd>
                     </dl>
                     <div class="info">
                       <div class="i-left">
-                        <!-- <dl>
-                          <dt>Hình thức:</dt>
-                          <dd>
-                            Dãy trọ -
-                            Tự quản </dd>
-                        </dl> -->
+                       
                         <dl>
                           <dt>Diện tích:</dt>
                           <dd>
@@ -79,12 +73,7 @@
                           <dt>Số phòng:</dt>
                           <dd>{{ news_detail?.total_room }}</dd>
                         </dl>
-                        <!-- <dl>
-                          <dt>Phòng trống:</dt>
-                          <dd>
-                            {{  }}
-                          </dd>
-                        </dl> -->
+                       
                         <dl>
                           <dt>Ở tối đa:</dt>
                           <dd>
@@ -107,16 +96,7 @@
                             </a>
                           </dd>
                         </dl>
-                        <!-- <dl>
-                          <dt>Facebook:</dt>
-                          <dd>
-                          </dd>
-                        </dl>
-                        <dl>
-                          <dt>Email:</dt>
-                          <dd>
-                          </dd>
-                        </dl> -->
+                        
                         <dl>
                           <dt>Ngày cập nhật:</dt>
                           <dd class="published">
@@ -139,92 +119,22 @@
                   <div class="py-20"></div>
 
                   <div class="line"></div>
-                  <div class="gmap">
-                    <!-- <h2>Vị trí</h2> -->
-
-                    <!-- <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                      src="https://maps.google.it/maps?q=P.+Linh+%C4%90%C3%A0m%2C+Ho%C3%A0ng+Mai%2C+H%C3%A0+N%E1%BB%99i%2C+Vietnam&amp;output=embed"></iframe> -->
-                  </div>
+                 
                   <div class="box-info-review" id="hostel-review">
-                    <h2 class="title">(Có 0 bài đánh giá)</h2>
-                    <!-- <div class="inner-review">
-                      <ul>
-                        <li>
-                          <p class="name">Chủ trọ :</p>
-                          <div class="grade">
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                          </div>
-                        </li>
-                        <li>
-                          <p class="name">Giá cả :</p>
-                          <div class="grade">
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                          </div>
-                        </li>
-                        <li>
-                          <p class="name">Môi trường :</p>
-                          <div class="grade">
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                          </div>
-                        </li>
-                        <li>
-                          <p class="name">Tiện ích :</p>
-                          <div class="grade">
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                          </div>
-                        </li>
-                        <li>
-                          <p class="name">An ninh :</p>
-                          <div class="grade">
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                          </div>
-                        </li>
-                        <li>
-                          <p class="name">Hàng xóm :</p>
-                          <div class="grade">
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div> -->
+                    
+                    
                     <div class="nav-tabs-custom">
                       <ul class="nav nav-tabs">
-                        <li class="active">
-                          <a href="#tab_1" data-toggle="tab" aria-expanded="true">Đánh giá</a>
-                        </li>
+                        
                         <li class="">
-                          <a data-toggle="modal" data-target="#box-review" class="port">Viết đánh giá</a>
+                          <a data-toggle="modal" data-target="#box-review" class="port">Đánh giá</a>
                         </li>
                       </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="tab_1">
                           <div class="item">
                             <div class="content-review">
-                              <p style="padding: 0 10px">Chưa có đánh giá nào</p>
+                             
                               <a href="#" class="more-review">Xem thêm <span class="fa fa-angle-right"></span></a>
                             </div>
                           </div>
@@ -249,34 +159,31 @@
             <div class="box-contact right">
               <h2>Liên hệ chủ trọ</h2>
               <dl>
-                <!-- <dt><i class="fa-regular fa-circle-user"></i></dt> -->
+               
                 <dd>
                   <h3>{{ news_detail?.host}}</h3>
                 </dd>
               </dl>
               <dl>
-                <!-- <dt><i class="fa-solid fa-phone"></i></dt> -->
+               
                 <dd>
                   <a >{{ news_detail?.phone }}</a>
                 </dd>
               </dl>
-              <!-- <div class="phone">
-                <a class="btn-global" href="tel:0983983147"> Gọi ngay </a>
-              </div> -->
+              
             </div>
             <div class="list-report">
-              <a data-toggle="modal" data-target="#baocao" class="report new report-list">Báo tin không hợp lệ</a>
-              <a data-toggle="modal" data-target="#exampleModal" class="report room empty"
-                onclick="addReportCode('het-phong')">Báo tin hết phòng</a>
+              <a  class="report new report-list" data-bs-toggle="modal"
+              data-bs-target="#modal_add">Báo cáo</a>
+             
             </div>
-            <div class="ads mt-10">
 
 
-              <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
           </div>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>

@@ -9,7 +9,7 @@
 
 						</div>
 						<div class="widget-user-header-wrap">
-							<h3 class="widget-user-username">0966496360</h3>
+							<h3 class="widget-user-username">Quang</h3>
 							<h4 class="widget-user-desc">Tài khoản : 0966496360</h4>
 						</div>
 					</div>
@@ -28,7 +28,7 @@
         <form action="" id="appForm" name="appForm" enctype="multipart/form-data" method="post">
           <table cellspacing="0" cellpadding="0" class="manager">
             <tbody>
-              <tr *ngFor="let item of news_list">
+              <tr *ngFor="let item of news_list| paginate:{ itemsPerPage : tableSize, currentPage: page, totalItems: count};">
                 <td>
                    <a class="title" href="/detail-news/{{ item?.id }}" target="_blank">{{ item.name }}
                   </a><br>
@@ -126,6 +126,10 @@
           </table>
 
         </form>
+        <div class="paginator">
+          <pagination-controls previousLabel="" nextLabel="" (pageChange)="ontableDataChange($event)">
+          </pagination-controls>
+        </div>
         <!-- <script
           type="text/javascript">function OnSubmitForm(url) { var flag = confirm('Bạn có đồng ý xóa tin này không?'); if (flag == true) { document.appForm.action = url; document.appForm.submit(); return true; } } Guest.OptionTin();</script> -->
       </div>

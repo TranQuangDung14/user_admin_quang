@@ -46,12 +46,23 @@ export class IndexComponent implements OnInit {
   //phân trang
   ontableDataChange(event: any) {
     this.page = event;
-    // this.get_all_voucher();
   }
   ontableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    // this.get_all_voucher();
+  }
+
+  page2: number = 1;
+  count2: number = 0;
+  tableSize2: number = 5;
+  tableSizes2: any = [5, 10, 15, 20];
+  //phân trang
+  ontableDataChange2(event2: any) {
+    this.page2 = event2;
+  }
+  ontableSizeChange2(event2: any): void {
+    this.tableSize2 = event2.target.value;
+    this.page2 = 1;
   }
 
 }
