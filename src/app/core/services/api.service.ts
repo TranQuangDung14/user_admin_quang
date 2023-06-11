@@ -81,13 +81,13 @@ export class ApiService {
     }
     )
   };
-    //detail dữ liệu theo id
-    get_detail(id: number): Observable<any> {
-      return this._http.get<any>(this.API_URL + 'get_product/' + id
+  //detail dữ liệu theo id
+  get_detail(id: number): Observable<any> {
+    return this._http.get<any>(this.API_URL + 'get_product/' + id
 
-        );
-    }
-      //them tin
+    );
+  }
+  //them tin
   create_add_news(data: any): Observable<any> {
     return this._http.post<any>(this.API_URL + 'add-news/', data, {
       headers: {
@@ -138,54 +138,77 @@ export class ApiService {
     });
   }
 
-    // địa chỉ
+  // địa chỉ
   // tỉnh
   getProvinces(): Observable<any> {
     return this._http.get<any>(this.API_URL + 'provinces/');
   }
   // Huyện
   getDistricts(provinceId: number): Observable<any> {
-    return this._http.get<any>(this.API_URL + 'districts/'+provinceId);
+    return this._http.get<any>(this.API_URL + 'districts/' + provinceId);
   }
   // xã
   getWards(districtId: number): Observable<any> {
-    return this._http.get<any>(this.API_URL + 'wards/'+districtId);
+    return this._http.get<any>(this.API_URL + 'wards/' + districtId);
   }
 
-// lọc
-// filter
-getFilteredProducts(category_id?: number, min_price?: number, max_price?: number, min_area?: number, max_area?: number, preferred_gender?: string, self_governance?: boolean, wards_id?: number, district_id?: number): Observable<any> {
-  let params = new HttpParams();
+  // lọc
+  // filter
+  getFilteredProducts(category_id?: number, min_price?: number, max_price?: number, min_area?: number, max_area?: number, preferred_gender?: string, self_governance?: boolean, wards_id?: number, district_id?: number): Observable<any> {
+    let params = new HttpParams();
 
-  if (category_id) {
-    params = params.set('category_id', category_id.toString());
-  }
-  if (min_price) {
-    params = params.set('min_price', min_price.toString());
-  }
-  if (max_price) {
-    params = params.set('max_price', max_price.toString());
-  }
-  if (min_area) {
-    params = params.set('min_area', min_area.toString());
-  }
-  if (max_area) {
-    params = params.set('max_area', max_area.toString());
-  }
-  if (preferred_gender) {
-    params = params.set('preferred_gender', preferred_gender);
-  }
-  if (self_governance != null) {
-    params = params.set('self_governance', self_governance.toString());
-  }
-  if (wards_id) {
-    params = params.set('wards_id', wards_id.toString());
-  }
-  if (district_id) {
-    params = params.set('district_id', district_id.toString());
-  }
+    if (category_id) {
+      params = params.set('category_id', category_id.toString());
+    }
+    if (min_price) {
+      params = params.set('min_price', min_price.toString());
+    }
+    if (max_price) {
+      params = params.set('max_price', max_price.toString());
+    }
+    if (min_area) {
+      params = params.set('min_area', min_area.toString());
+    }
+    if (max_area) {
+      params = params.set('max_area', max_area.toString());
+    }
+    if (preferred_gender) {
+      params = params.set('preferred_gender', preferred_gender);
+    }
+    if (self_governance != null) {
+      params = params.set('self_governance', self_governance.toString());
+    }
+    if (wards_id) {
+      params = params.set('wards_id', wards_id.toString());
+    }
+    if (district_id) {
+      params = params.set('district_id', district_id.toString());
+    }
 
-  return this._http.get<any>(this.API_URL + 'filter_products/', { params });
+    return this._http.get<any>(this.API_URL + 'filter_products/', { params });
+  }
+  //lưu tin
+  save_news(data: any): Observable<any> {
+    return this._http.post<any>(this.API_URL + 'save_news/', data, {
+      headers: {
+        Authorization: this.code_tokens,
+      },
+    });
+  }
+// Hủy lưu tin
+cancel_save_news(news_id: any): Observable<any> {
+  return this._http.delete<any>(this.API_URL + 'save_news', {
+    params: new HttpParams().set('news_id', news_id),
+    headers: {
+      Authorization: this.code_tokens,
+    },
+  });
 }
-
+get_save_news(): Observable<any> {
+  return this._http.get<any>(this.API_URL + 'save_news/', {
+    headers: {
+      Authorization: this.code_tokens
+    }
+  });
+}
 }

@@ -28,10 +28,10 @@
                     <span class="item type">
                       Cho thuê trọ </span>
                     <span class="item_sep"> / </span>
-                    <span class="item">{{ news_detail?.district.name }}</span>
+                    <span class="item">{{ news_detail?.district?.name }}</span>
                     <span class="item_sep"> / </span>
                     <span class="item">
-                      {{ news_detail?.ward.name }}
+                      {{ news_detail?.ward?.name }}
                     </span>
                   </div>
                 </div>
@@ -40,9 +40,10 @@
                 </div>
                 <div class="social-date">
 
-              
-                  <a href="javascript:void(0);" onclick="saveHostel(20642,23152)" class="tag saved heart-20642">Lưu
-                    tin</a>
+
+                  <!-- <a href="javascript:void(0);" onclick="saveHostel(20642,23152)" class="tag saved heart-20642">Lưu
+                    tin</a> -->
+                    <button class="tag saved heart-20642" (click)="toggleSave(news_detail.id)">{{ isSaved ? 'Hủy lưu tin' : 'Lưu tin' }}</button>
 
                 </div>
               </div>
@@ -51,7 +52,7 @@
                   <div class="info-wrapper">
                     <dl>
                       <dt>Địa chỉ:</dt>
-                      <dd> {{ news_detail?.address }}, {{ news_detail?.ward.name }}, {{ news_detail?.district.name }}</dd>
+                      <dd> {{ news_detail?.address }}, {{ news_detail?.ward?.name }}, {{ news_detail?.district?.name }}</dd>
                     </dl>
                     <dl>
                       <dt>Giá:</dt>
@@ -62,7 +63,7 @@
                     </dl>
                     <div class="info">
                       <div class="i-left">
-                       
+
                         <dl>
                           <dt>Diện tích:</dt>
                           <dd>
@@ -73,7 +74,7 @@
                           <dt>Số phòng:</dt>
                           <dd>{{ news_detail?.total_room }}</dd>
                         </dl>
-                       
+
                         <dl>
                           <dt>Ở tối đa:</dt>
                           <dd>
@@ -85,7 +86,7 @@
                         <dl>
                           <dt>Người đăng:</dt>
                           <dd>
-                            <span>{{ news_detail?.customer.name }}</span>
+                            <span>{{ news_detail?.customer?.name }}</span>
                           </dd>
                         </dl>
                         <dl>
@@ -96,7 +97,7 @@
                             </a>
                           </dd>
                         </dl>
-                        
+
                         <dl>
                           <dt>Ngày cập nhật:</dt>
                           <dd class="published">
@@ -119,13 +120,13 @@
                   <div class="py-20"></div>
 
                   <div class="line"></div>
-                 
+
                   <div class="box-info-review" id="hostel-review">
-                    
-                    
+
+
                     <div class="nav-tabs-custom">
                       <ul class="nav nav-tabs">
-                        
+
                         <li class="">
                           <a data-toggle="modal" data-target="#box-review" class="port">Đánh giá</a>
                         </li>
@@ -134,7 +135,7 @@
                         <div class="tab-pane active" id="tab_1">
                           <div class="item">
                             <div class="content-review">
-                             
+
                               <a href="#" class="more-review">Xem thêm <span class="fa fa-angle-right"></span></a>
                             </div>
                           </div>
@@ -159,23 +160,23 @@
             <div class="box-contact right">
               <h2>Liên hệ chủ trọ</h2>
               <dl>
-               
+
                 <dd>
                   <h3>{{ news_detail?.host}}</h3>
                 </dd>
               </dl>
               <dl>
-               
+
                 <dd>
                   <a >{{ news_detail?.phone }}</a>
                 </dd>
               </dl>
-              
+
             </div>
             <div class="list-report">
               <a  class="report new report-list" data-bs-toggle="modal"
               data-bs-target="#modal_add">Báo cáo</a>
-             
+
             </div>
 
 
