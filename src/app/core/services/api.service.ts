@@ -61,12 +61,12 @@ export class ApiService {
   }
 
   getalldashboard(): Observable<any> {
-    return this._http.get<any>(this.API_URL + 'get_product');
+    return this._http.get<any>(this.API_URL + 'get_news');
   }
 
 
   get_index_news(): Observable<any> {
-    return this._http.get<any>(this.API_URL + 'get_product/', {
+    return this._http.get<any>(this.API_URL + 'get_news/', {
       // headers: {
       //   Authorization: this.code_tokens
       // },
@@ -83,7 +83,13 @@ export class ApiService {
   };
   //detail dữ liệu theo id
   get_detail(id: number): Observable<any> {
-    return this._http.get<any>(this.API_URL + 'get_product/' + id
+    return this._http.get<any>(this.API_URL + 'get_news/' + id
+
+    );
+  }
+
+  get_post_detail(id: number): Observable<any> {
+    return this._http.get<any>(this.API_URL + 'get_posts/' + id
 
     );
   }
@@ -137,7 +143,13 @@ export class ApiService {
       },
     });
   }
-
+  update_password(data: any): Observable<any> {
+    return this._http.post<any>(this.API_URL + 'change-password/', data, {
+      headers: {
+        Authorization: this.code_tokens,
+      },
+    });
+  }
   // địa chỉ
   // tỉnh
   getProvinces(): Observable<any> {
@@ -185,7 +197,7 @@ export class ApiService {
       params = params.set('district_id', district_id.toString());
     }
 
-    return this._http.get<any>(this.API_URL + 'filter_products/', { params });
+    return this._http.get<any>(this.API_URL + 'filter_news/', { params });
   }
   //lưu tin
   save_news(data: any): Observable<any> {

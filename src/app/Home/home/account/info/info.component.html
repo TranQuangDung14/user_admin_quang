@@ -1,0 +1,52 @@
+<!-- header -->
+
+<div class="main-content">
+  <div class="container">
+         
+      
+      
+          <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()">
+            <div>
+              <label>Mật khẩu cũ</label>
+              <div class="input-group">
+                <input type="{{ showOldPassword ? 'text' : 'password' }}" class="form-control" formControlName="old_password" placeholder="Nhập mật khẩu cũ">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="toggleShowOldPassword()">
+                    <i class="fa" [ngClass]="showOldPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label>Mật khẩu mới</label>
+              <div class="input-group">
+                <input type="{{ showNewPassword ? 'text' : 'password' }}" class="form-control" formControlName="new_password" placeholder="Nhập mật khẩu mới">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="toggleShowNewPassword()">
+                    <i class="fa" [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label>Nhập lại mật khẩu mới</label>
+              <div class="input-group">
+                <input type="{{ showConfirmPassword ? 'text' : 'password' }}" class="form-control" formControlName="new_confirm_password" placeholder="Nhập lại mật khẩu mới">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="toggleShowConfirmPassword()">
+                    <i class="fa" [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-danger m-t-20">Đổi mật khẩu</button>
+            </div>
+          </form>
+       
+
+        </div>
+      </div>

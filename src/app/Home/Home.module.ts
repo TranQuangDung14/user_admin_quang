@@ -31,12 +31,14 @@ import { News_detailComponent } from './home/component/news/news_detail/news_det
 import { NewComponent } from './home/component/new/new.component';
 import { NewAddComponent } from './home/component/new/new-add/new-add.component';
 import { NewEditComponent } from './home/component/new/new-edit/new-edit.component';
-import { NewHistoryComponent } from './home/component/new/new-history/new-history.component';
+
 import { NewListComponent } from './home/component/new/new-list/new-list.component';
 import { NewSaveComponent } from './home/component/new/new-save/new-save.component';
-import { NewUpgradeComponent } from './home/component/new/new-upgrade/new-upgrade.component';
+
 import { HomeIndexComponent } from './home/component/new/home-index/home-index.component';
 import { AuthGuardGuard } from '../core/guards/auth-guard.guard';
+import { Post_detailComponent } from './home/component/post_detail/post_detail.component';
+import { InfoComponent } from './home/account/info/info.component';
 
 const router_home:Routes=[
   {
@@ -56,6 +58,10 @@ const router_home:Routes=[
     {
       path:"post",
       component:PostComponent,
+    },
+    {
+      path:"post-detail/:id",
+      component:Post_detailComponent,
     },
 
     {
@@ -84,10 +90,7 @@ const router_home:Routes=[
           path:"new-edit/:id",
           component:NewEditComponent,
         },
-        {
-          path:"new-history",
-          component:NewHistoryComponent,
-        },
+       
         {
           path:"new-list",
           component:NewListComponent,
@@ -97,9 +100,10 @@ const router_home:Routes=[
           component:NewSaveComponent,
         },
         {
-          path:"new-upgrade",
-          component:NewUpgradeComponent,
+          path:"chang-pass",
+          component:InfoComponent,
         },
+       
       ]
     },
 
@@ -135,22 +139,18 @@ const router_home:Routes=[
     HomeComponent,
 
     IndexComponent,
-
     InstructComponent,
-
     PostComponent,
-
+    Post_detailComponent,
     News_listComponent,
     News_detailComponent,
-
+    InfoComponent,
 
     NewComponent,
     NewAddComponent,
     NewEditComponent,
-    NewHistoryComponent,
     NewSaveComponent,
     NewListComponent,
-    NewUpgradeComponent,
     HomeIndexComponent,
 
     LoginComponent,

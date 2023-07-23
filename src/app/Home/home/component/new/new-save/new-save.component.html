@@ -29,10 +29,10 @@
                 </dl>
               </div>
               <dl class="contact">
-                <div class="price">
-                  2.800.000 VNĐ
+                <div class="price" style="color: red;">
+                  {{ item?.news?.default_price|currency:'VND' }}
                 </div>
-                <span class="published">Hôm nay</span>
+                <span class="published">{{ item?.news?.created_at|date:'dd/MM/yyyy' }}</span>
               </dl>
             </div>
           </div>

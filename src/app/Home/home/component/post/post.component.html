@@ -12,16 +12,16 @@
 
               <div class="border">
                 <div class="image"
-                  style="background-image:url('https://tromoi.com/uploads/members/ai.tran/blog/TM_23-3-01.png')">
+                [style.background-image]="'url(http://127.0.0.1:8000/storage/' + item?.image +')'">
                   <a
-                    href="post"></a>
+                    href="/post-detail/{{ item?.id }}"></a>
                 </div>
                 <div class="content">
                   <h4 class="title"><a
-                      href="post">	{{ item.name }}</a></h4>
-                  <div class="description">{{ item.description }}
+                      href="post">	{{ item.title }}</a></h4>
+                  <div class="description">
                   </div>
-                  <span class="published">Hôm nay</span>
+                  <span class="published">{{ item.created_at }}</span>
                 </div>
               </div>
             </div>
