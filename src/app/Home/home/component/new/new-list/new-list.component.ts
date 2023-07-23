@@ -28,7 +28,10 @@ export class NewListComponent implements OnInit {
         this.news_list=data;
 
         console.log('san pham', this.news_list);
-        
+        // console.log(data.category_product);
+
+        // this.product = data.product;
+        // this.category_product = data.category_product;
       }, error => {
         console.log(error);
 

@@ -128,7 +128,7 @@ export class NewAddComponent implements OnInit {
     console.log('this',this.productForm.value)
     this.admin.create_add_news(formData).subscribe(
       res => {
-        this.router.navigate(['/new/new-list']);
+        // this.router.navigate(['/product']);
         this.toastr.success('Thêm mới thành công!',);
         // console.log(res);
         // do something with the response

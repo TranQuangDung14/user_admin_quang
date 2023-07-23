@@ -146,9 +146,8 @@ export class NewEditComponent implements OnInit {
     this.admin.update_news(this.id, formData).subscribe(
       (res) => {
         // do something with the response
-        this.router.navigate(['/new/new-list']);
         this.toastr.success('Cập nhật thành công!', );
-       
+        // this.router.navigate(['/product']); // navigate to products page after successful update
       },
       (error) => {
         this.toastr.error('Cập nhật thất bại!', );
